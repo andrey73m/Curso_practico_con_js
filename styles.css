@@ -32,7 +32,7 @@ nav{
   display: none;
 }
 .logo {
-  width: 100px;
+  width: 45px;
 }
 .navbar-left ul, .navbar-right ul {
   list-style: none;
@@ -65,10 +65,10 @@ nav{
   font-size: var(--sm);
   margin-right: 12px;
 }
-.navbar-shopping-card {
+.navbar-shopping-cart {
   position: relative;
 }
-.navbar-shopping-card div {
+.navbar-shopping-cart div {
   width: 16px;
   height: 16px;
   background-color: var(--green-light);
@@ -122,8 +122,9 @@ nav{
 /*Mobile Menu*/
 
 .mobile-menu {
+  background: var(--white);
   position: absolute;
-  top: 60px;
+  top: 62px;
   padding: 24px;
 }
 .mobile-menu a {
@@ -140,7 +141,7 @@ nav{
   border-bottom: 1px solid var(--gray-light);
 }
 .mobile-menu ul:last-child { 
-  position: absolute; bottom: 0; 
+  position: absolute; 
 }
 .mobile-menu ul li{
   margin-bottom: 24px;
@@ -154,6 +155,86 @@ nav{
   color: var(--purple);
 }
 
+/* Product detail cart shopping*/
+
+.product-detail {
+  background: var(--white);
+  width: 360px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+}
+.title-container {
+  display: flex;
+}
+.title-container img {
+  transform: rotate(180deg);
+  margin-right: 14px;
+ }
+.title {
+  font-size: var(--lg);
+  font-weight: bold;
+}
+.order {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+  background-color: var(--green-light);
+  margin-bottom: 24px;
+  border-radius: 8px;
+  padding: 0 24px;
+}
+.order p:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+}
+.order p:nth-child(2) {
+  text-align: end;
+  font-weight: bold;
+}
+.order p span:nth-child(1) {
+  font-size: var(--md);
+  font-weight: bold;
+}
+.shopping-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+.shopping-card figure {
+  margin: 0;
+}
+.shopping-card figure img {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+.shopping-card p:nth-child(2) {
+  color: var(--gray-light);
+}
+.shopping-card p:nth-child(3) {
+  font-size: var(--md);
+  font-weight: bold;
+}
+.primary-button {
+width: 100%;
+height: 50px;
+cursor: pointer;
+background-color: var(--blue);
+border: none;
+border-radius: 8px;
+color: var(--white);
+font-size: var(--md);
+font-weight: bold;
+}
+
+
+
 @media (max-width: 650px){
   .menu{
     display: block;
@@ -166,6 +247,9 @@ nav{
   }
   .desktop-menu {
     display: none;
+  }
+  .product-detail {
+    width: 100%;
   }
 }
 
