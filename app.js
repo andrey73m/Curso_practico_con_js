@@ -3,8 +3,11 @@ const desktopMenu = document.querySelector('.desktop-menu')
 const iconMenu = document.querySelector('.menu')
 const mobileMenu = document.querySelector('.mobile-menu')
 const iconCartMenu = document.querySelector('.navbar-shopping-cart')
+const productDetailCloseIcon = document.querySelector('.product-detail-close')
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer')
 const cardsContainer = document.querySelector('.cards-container')
+const productDetailContainer = document.querySelector('#productDetail')
+
 
 const toggleDesktopMenu = () => {
   desktopMenu.classList.toggle('inactive');
@@ -16,12 +19,17 @@ const toggleMobileMenu = () => {
   if(!isProductDetailClosed)
   shoppingCartContainer.classList.add('inactive')
 
+  closeProductDetailAside();
   mobileMenu.classList.toggle('inactive');
   
 }
 
 const toggleProductDetail = () => {
   const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
+  const isProductDetailClosed = productDetailContainer.classList.contains('inactive');
+
+  if(!isProductDetailClosed)
+    productDetailContainer.classList.add('inactive')
 
   if(!isMobileMenuClosed)
   mobileMenu.classList.add('inactive')
@@ -29,10 +37,19 @@ const toggleProductDetail = () => {
   shoppingCartContainer.classList.toggle('inactive')
 }
 
+const openProductDetailAside = () => {
+  shoppingCartContainer.classList.add('inactive')
+  productDetailContainer.classList.remove('inactive')
+}
+
+const closeProductDetailAside = () => {
+  productDetailContainer.classList.add('inactive')
+}
+
 menuEmail.addEventListener('click', toggleDesktopMenu)
 iconMenu.addEventListener('click', toggleMobileMenu)
 iconCartMenu.addEventListener('click', toggleProductDetail)
-
+productDetailCloseIcon.addEventListener('click', closeProductDetailAside)
 
 const productList = [];
 
@@ -76,8 +93,9 @@ const renderProducts = (arr) => {
     productCard.classList.add('product-card')
     // If you have more than 1 element you can use append
     productCard.append(img, productInfo)
-  
     img.setAttribute('src', product.image)
+
+    img.addEventListener('click', openProductDetailAside)
   
     productInfo.classList.add('product-info')
     productInfo.append(productChar, productInfoFigure)
